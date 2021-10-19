@@ -101,12 +101,44 @@ public class TierCollection implements ICustomCollection<TierLevel, Player>{
 
     @Override
     public Player findInAnyKey(Player value) {
-        return null;
+                Player rta= null;
+
+
+        Iterator iter = this.iterator();
+        CustomEntry current = null;
+        while( iter.hasNext())
+        {
+            current =  (CustomEntry) iter.next();
+            if(current.getValue().contains(value))
+            {
+              rta = value;
+            }
+        }
+        current =  (CustomEntry) iter.next(); 
+        if(current.getValue().contains(value))
+        {
+            rta = value;
+        }
+        
+        return rta;
     }
 
     @Override
     public TierLevel findKey(Player value) {
-        return null;
+        TierLevel rta= null;
+
+
+        Iterator iter = this.iterator();
+        CustomEntry current = null;
+        while( iter.hasNext())
+        {
+            current =  (CustomEntry) iter.next();
+            if(current.getValue().contains(value))
+            {
+              //rta = value;
+            }
+        }
+        return rta;
     }
 
     
