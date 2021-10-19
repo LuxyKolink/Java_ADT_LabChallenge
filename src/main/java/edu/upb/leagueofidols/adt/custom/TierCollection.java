@@ -69,6 +69,34 @@ public class TierCollection implements ICustomCollection<TierLevel, Player>{
         return rta;
 
     }
+    
+     @Override
+    public boolean existInKey(TierLevel key, Player value) {
+
+        Iterator iter = this.iterator();
+        CustomEntry current = null;
+        while( iter.hasNext())
+        {
+            current =  (CustomEntry) iter.next();
+            if(current.getKey().equals(key))
+            {
+                if(current.getValue().contains(value))
+                {
+                    return true;
+                }
+            }
+        }
+        current =  (CustomEntry) iter.next(); 
+        if(current.getKey().equals(key))
+        {
+            if(current.getValue().contains(value))
+            {
+                return true;
+            }
+        }
+        return false;
+
+    }
 
 
     @Override
@@ -81,11 +109,7 @@ public class TierCollection implements ICustomCollection<TierLevel, Player>{
         return null;
     }
 
-    @Override
-    public boolean existInKey(TierLevel key, Player value) {
-        return false;
-    }
-
+    
     @Override
     public boolean existInAnyKey(Player value) {
         return false;
